@@ -1,3 +1,4 @@
+import json
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -41,6 +42,13 @@ CATEGORIES = [
 ]
 
 PAGES = ["Overview", "Benchmark", "Model Comparison", "Error Analysis", "AI Arena"]
+QUESTIONS_FILE = "data/benchmark_questions.json"
+
+
+@st.cache_data
+def load_questions():
+    with open(QUESTIONS_FILE, encoding="utf-8") as f:
+        return json.load(f)
 
 
 # ---------- Page functions ----------
@@ -87,6 +95,37 @@ def show_overview():
     for category in CATEGORIES:
         st.markdown(f"**{category['name']}**: {category['description']}")
 
+def show_benchmark():
+    st.title("Benchmark")
+    st.write("Browse the benchmark questions by category and difficulty.")
+
+    questions = load_questions()
+
+    # Filters
+    category_names = [c["name"] for c in CATEGORIES]
+    col1, col2 = st.columns(2)
+    chosen_categories = col1.multiselect("Category", category_names, default=category_names)
+    chosen_levels = col2.multiselect(
+        "Difficulty", ["Easy", "Medium", "Hard"], default=["Easy", "Medium", "Hard"]
+    )
+
+    filtered = [
+        q for q in questions
+        if q["category"] in chosen_categories and q["difficulty"] in chosen_levels
+    ]
+
+    verified_count = sum(1 for q in filtered if q["verified"])
+    st.caption(f"Showing {len(filtered)} questions. Human-verified: {verified_count}.")
+
+    # One expandable card per question
+    for q in filtered:
+        status = "Verified" if q["verified"] else "Not yet verified"
+        with st.expander(f"{q['id']}  |  {q['category']}  |  {q['difficulty']}  |  {status}"):
+            st.markdown(f"**{q['question']}**")
+            for letter, text in q["choices"].items():
+                st.write(f"{letter}) {text}")
+            st.success(f"Correct answer: {q['correct_answer']}")
+            st.caption(q["explanation"])
 
 def show_placeholder(title, description):
     st.title(title)
@@ -103,10 +142,7 @@ page = st.sidebar.radio("Navigation", PAGES)
 if page == "Overview":
     show_overview()
 elif page == "Benchmark":
-    show_placeholder(
-        "Benchmark",
-        "Browse the human-verified questions by category and difficulty (Easy / Medium / Hard).",
-    )
+    show_benchmark()
 elif page == "Model Comparison":
     show_placeholder(
         "Model Comparison",

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ORT-001",
+    "category": "Orthography",
+    "difficulty": "Easy",
+    "question": "Hansı sözün yazılışı düzgündür?",
+    "choices": {
+      "A": "azerbaycan",
+      "B": "Azərbaycan",
+      "C": "Azerbaijan",
+      "D": "Azarbaycan"
+    },
+    "correct_answer": "B",
+    "explanation": "Azərbaycan sözündə ə hərfi işlənir və söz böyük hərflə başlayır.",
+    "verified": false
+  },
+  {
+    "id": "IDM-001",
+    "category": "Idioms & Figurative Language",
+    "difficulty": "Medium",
+    "question": "\"Əli açıq\" ifadəsi hansı mənanı verir?",
+    "choices": {
+      "A": "Əli yaralı olan",
+      "B": "Səxavətli, əliaçıq",
+      "C": "Tez-tez yalan danışan",
+      "D": "Çox işləyən"
+    },
+    "correct_answer": "B",
+    "explanation": "\"Əli açıq\" frazeoloji birləşməsi səxavətli, əliaçıq adam deməkdir.",
+    "verified": false
+  },
+  {
+    "id": "MOR-001",
+    "category": "Morphology & Grammar",
+    "difficulty": "Medium",
+    "question": "\"Kitab\" sözünə cəm şəkilçisi və \"mənim\" mənsubiyyət şəkilçisi düzgün hansı formada artırılır?",
+    "choices": {
+      "A": "kitablarım",
+      "B": "kitabımlar",
+      "C": "kitablərim",
+      "D": "kitabılar"
+    },
+    "correct_answer": "A",
+    "explanation": "Əvvəl cəm şəkilçisi (-lar), sonra mənsubiyyət şəkilçisi (-ım) gəlir; ahəng qanununa görə qalın saitli şəkilçilər işlənir.",
+    "verified": false
+  }
+]
