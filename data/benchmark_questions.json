@@ -118,5 +118,80 @@
     "correct_answer": "A",
     "explanation": "Əvvəl cəm şəkilçisi (-lar), sonra mənsubiyyət şəkilçisi (-ım) gəlir; ahəng qanununa görə qalın saitli şəkilçilər işlənir.",
     "verified": true
+  },
+  {
+    "id": "MOR-002",
+    "category": "Morphology & Grammar",
+    "difficulty": "Easy",
+    "question": "\"Ev\" sözünə cəm şəkilçisi düzgün hansı formada artırılır?",
+    "choices": {
+      "A": "evlər",
+      "B": "evlar",
+      "C": "evler",
+      "D": "evlərlər"
+    },
+    "correct_answer": "A",
+    "explanation": "\"Ev\" sözünün saiti incədir, ona görə cəm şəkilçisi -lər olur: evlər.",
+    "verified": true
+  },
+  {
+    "id": "MOR-003",
+    "category": "Morphology & Grammar",
+    "difficulty": "Medium",
+    "question": "\"Göz\" sözünə \"mənim\" mənsubiyyət şəkilçisi düzgün hansı formada artırılır?",
+    "choices": {
+      "A": "gözim",
+      "B": "gözüm",
+      "C": "gözum",
+      "D": "gözəm"
+    },
+    "correct_answer": "B",
+    "explanation": "\"Göz\" sözündəki ö saiti incə və dodaqlanandır, ona görə şəkilçi -üm olur: gözüm.",
+    "verified": true
+  },
+  {
+    "id": "MOR-004",
+    "category": "Morphology & Grammar",
+    "difficulty": "Medium",
+    "question": "\"Məktəb\" sözü yönlük halda (hara? sualına cavab verən formada) düzgün hansı formada işlənir?",
+    "choices": {
+      "A": "məktəbə",
+      "B": "məktəbi",
+      "C": "məktəbdə",
+      "D": "məktəbdən"
+    },
+    "correct_answer": "A",
+    "explanation": "Yönlük hal şəkilçisi -a/-ə-dir: məktəbə. Digər variantlar təsirlik, yerlik və çıxışlıq hallardır.",
+    "verified": true
+  },
+  {
+    "id": "MOR-005",
+    "category": "Morphology & Grammar",
+    "difficulty": "Medium",
+    "question": "\"Ağac\" sözü çıxışlıq halda (haradan? sualına cavab verən formada) düzgün hansı formada işlənir?",
+    "choices": {
+      "A": "ağacdən",
+      "B": "ağactan",
+      "C": "ağacdan",
+      "D": "ağacdın"
+    },
+    "correct_answer": "C",
+    "explanation": "\"Ağac\" sözü cingiltili c samiti ilə bitir və saiti qalındır, ona görə şəkilçi -dan olur: ağacdan.",
+    "verified": true
+  },
+  {
+    "id": "MOR-006",
+    "category": "Morphology & Grammar",
+    "difficulty": "Hard",
+    "question": "\"Müəllim\" sözünə cəm, \"bizim\" mənsubiyyət və yerlik hal şəkilçiləri bu ardıcıllıqla artırıldıqda düzgün forma hansıdır?",
+    "choices": {
+      "A": "müəllimlərimizda",
+      "B": "müəllimimizlərdə",
+      "C": "müəllimlərdəmiz",
+      "D": "müəllimlərimizdə"
+    },
+    "correct_answer": "D",
+    "explanation": "Ardıcıllıq: kök + cəm (-lər) + mənsubiyyət (-imiz) + hal (-də). Saitlər incə olduğu üçün şəkilçilər incə saitlidir.",
+    "verified": true
   }
 ]
