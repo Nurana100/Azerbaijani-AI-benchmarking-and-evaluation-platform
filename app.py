@@ -121,6 +121,8 @@ def show_benchmark():
     for q in filtered:
         status = "Verified" if q["verified"] else "Not yet verified"
         with st.expander(f"{q['id']}  |  {q['category']}  |  {q['difficulty']}  |  {status}"):
+            if "passage" in q:
+                st.info(q["passage"])
             st.markdown(f"**{q['question']}**")
             for letter, text in q["choices"].items():
                 st.write(f"{letter}) {text}")
