@@ -105,6 +105,81 @@
     "verified": true
   },
   {
+    "id": "IDM-002",
+    "category": "Idioms & Figurative Language",
+    "difficulty": "Easy",
+    "question": "\"Ürəyi daşdan olmaq\" ifadəsi hansı mənanı verir?",
+    "choices": {
+      "A": "Çox güclü olmaq",
+      "B": "Mərhəmətsiz, qəddar olmaq",
+      "C": "Xəstə olmaq",
+      "D": "Çox qorxaq olmaq"
+    },
+    "correct_answer": "B",
+    "explanation": "\"Ürəyi daşdan olmaq\" mərhəmətsiz, qəddar olmaq deməkdir.",
+    "verified": true
+  },
+  {
+    "id": "IDM-003",
+    "category": "Idioms & Figurative Language",
+    "difficulty": "Easy",
+    "question": "\"Dil tökmək\" ifadəsi hansı mənanı verir?",
+    "choices": {
+      "A": "Çox danışmaq",
+      "B": "Yalan danışmaq",
+      "C": "Yalvarıb-yaxarmaq, xoşa gəlməyə çalışmaq",
+      "D": "Sakit qalmaq"
+    },
+    "correct_answer": "C",
+    "explanation": "\"Dil tökmək\" şirin, könüloxşayan sözlərlə kimisə razı salmağa çalışmaq deməkdir.",
+    "verified": true
+  },
+  {
+    "id": "IDM-004",
+    "category": "Idioms & Figurative Language",
+    "difficulty": "Medium",
+    "question": "\"Əl-ayağa düşmək\" ifadəsi hansı mənanı verir?",
+    "choices": {
+      "A": "Tələsik, həyəcanla hərəkət etmək, çaşıb qalmaq",
+      "B": "Yıxılıb xəsarət almaq",
+      "C": "Çox yorulmaq",
+      "D": "Rəqs etməyə başlamaq"
+    },
+    "correct_answer": "A",
+    "explanation": "\"Əl-ayağa düşmək\" tələsik, həyəcanla hərəkət etmək, çaşıb qalmaq mənasını verir.",
+    "verified": true
+  },
+  {
+    "id": "IDM-005",
+    "category": "Idioms & Figurative Language",
+    "difficulty": "Medium",
+    "question": "\"Ürəyi yerinə gəlmək\" ifadəsi hansı mənanı verir?",
+    "choices": {
+      "A": "Ürək xəstəliyindən sağalmaq",
+      "B": "Təşvişdən sonra sakitləşmək, arxayın olmaq",
+      "C": "Yeni evə köçmək",
+      "D": "Çox sevinmək"
+    },
+    "correct_answer": "B",
+    "explanation": "\"Ürəyi yerinə gəlmək\" təşvişdən sonra sakitləşmək, arxayın olmaq deməkdir.",
+    "verified": true
+  },
+  {
+    "id": "IDM-006",
+    "category": "Idioms & Figurative Language",
+    "difficulty": "Hard",
+    "question": "\"Dilinin ucuna gəlmək\" ifadəsi hansı mənanı verir?",
+    "choices": {
+      "A": "Danışmağa başlamaq",
+      "B": "Dili ağrımaq",
+      "C": "Çox danışmaq",
+      "D": "Deyəcəyi sözü bir anlıq xatırlaya bilməmək, amma demək üzrə olmaq"
+    },
+    "correct_answer": "D",
+    "explanation": "\"Dilinin ucuna gəlmək\" deyəcəyi sözü demək üzrə olub, bir anlıq xatırlaya bilməmək deməkdir.",
+    "verified": true
+  },
+  {
     "id": "MOR-001",
     "category": "Morphology & Grammar",
     "difficulty": "Medium",
