@@ -5,6 +5,7 @@ from datetime import datetime
 
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 import streamlit as st
 
 st.set_page_config(page_title="LexiCode", page_icon="🔤", layout="wide")
@@ -39,8 +40,26 @@ CATEGORIES = [
     },
 ]
 CATEGORY_NAMES = [c["name"] for c in CATEGORIES]
+SHORT = {
+    "Idioms & Figurative Language": "Idioms",
+    "Orthography": "Orthography",
+    "Morphology & Grammar": "Morphology",
+    "Context & Comprehension": "Context",
+    "Faithfulness": "Faithfulness",
+}
 LEVELS = ["Easy", "Medium", "Hard"]
 PAGES = ["Overview", "Benchmark", "Model Comparison", "Error Analysis", "AI Arena"]
+
+# One fixed color per model, used on every chart (muted flag colors)
+MODEL_COLORS = {
+    "GPT-OSS 120B (Groq)": "#2563A8",
+    "Gemini (gemini-3.1-flash-lite)": "#2F8F5B",
+    "GPT-OSS 20B (Groq)": "#B7791F",
+    "Qwen3.8 27B (Groq)": "#C8453B",
+}
+ERROR_COLOR = "#C8453B"
+INK = "#1F2937"
+GRID = "#E5E7EB"
 
 
 # ---------- Data loading ----------
@@ -73,6 +92,115 @@ def results_table():
     return df
 
 
+# ---------- Chart helpers ----------
+def style(fig, height=360):
+    fig.update_layout(
+        template="plotly_white",
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        height=height,
+        margin=dict(l=10, r=10, t=20, b=10),
+        font=dict(size=14, color=INK),
+        legend_title_text="",
+    )
+    fig.update_xaxes(gridcolor=GRID, zerolinecolor=GRID)
+    fig.update_yaxes(gridcolor=GRID, zerolinecolor=GRID)
+    return fig
+
+
+def model_summary(df):
+    s = (
+        df.groupby("model")
+        .agg(correct=("is_correct", "sum"), total=("is_correct", "count"))
+        .reset_index()
+    )
+    s["accuracy"] = s["correct"] / s["total"] * 100
+    return s.sort_values(["accuracy", "model"], ascending=[False, True]).reset_index(drop=True)
+
+
+def leaderboard_chart(summary):
+    s = summary.copy()
+    s["label"] = s["correct"].astype(int).astype(str) + "/" + s["total"].astype(int).astype(str)
+    fig = px.bar(
+        s,
+        x="accuracy",
+        y="model",
+        orientation="h",
+        text="label",
+        color="model",
+        color_discrete_map=MODEL_COLORS,
+        range_x=[0, 100],
+        labels={"accuracy": "Accuracy (%)", "model": ""},
+    )
+    fig.update_traces(textposition="inside", textfont=dict(size=16, color="#FFFFFF"))
+    fig.update_yaxes(categoryorder="array", categoryarray=list(s["model"])[::-1])
+    fig.update_layout(showlegend=False)
+    return style(fig, 300)
+
+
+def heatmap_chart(df, summary):
+    order = list(summary["model"])
+    g = (
+        df.groupby(["model", "category"])
+        .agg(correct=("is_correct", "sum"), total=("is_correct", "count"))
+        .reset_index()
+    )
+    z, text = [], []
+    for m in order:
+        z_row, t_row = [], []
+        for c in CATEGORY_NAMES:
+            row = g[(g["model"] == m) & (g["category"] == c)]
+            if row.empty:
+                z_row.append(None)
+                t_row.append("")
+            else:
+                cor = int(row["correct"].iloc[0])
+                tot = int(row["total"].iloc[0])
+                z_row.append(cor / tot * 100)
+                t_row.append(f"{cor}/{tot}")
+        z.append(z_row)
+        text.append(t_row)
+    fig = go.Figure(
+        go.Heatmap(
+            z=z,
+            x=[SHORT.get(c, c) for c in CATEGORY_NAMES],
+            y=order,
+            text=text,
+            texttemplate="%{text}",
+            textfont=dict(size=16, color=INK),
+            colorscale=[[0, "#EBB0A8"], [1, "#A9D5B8"]],
+            zmin=60,
+            zmax=100,
+            xgap=3,
+            ygap=3,
+            showscale=False,
+        )
+    )
+    fig.update_yaxes(autorange="reversed")
+    return style(fig, 320)
+
+
+def errors_by_category_chart(df):
+    errs = (
+        df[~df["is_correct"]]
+        .groupby("category")
+        .size()
+        .reindex(CATEGORY_NAMES, fill_value=0)
+        .reset_index(name="errors")
+    )
+    errs["label"] = errs["category"].map(SHORT)
+    fig = px.bar(
+        errs,
+        x="label",
+        y="errors",
+        text="errors",
+        labels={"label": "", "errors": "Wrong answers (all models)"},
+    )
+    fig.update_traces(marker_color=ERROR_COLOR, textposition="outside")
+    fig.update_yaxes(dtick=1, range=[0, max(3, int(errs["errors"].max()) + 1)])
+    return style(fig, 300)
+
+
 # ---------- Pages ----------
 def show_overview():
     st.title("LexiCode")
@@ -95,41 +223,31 @@ def show_overview():
         "This is a small sample, so small differences between models are not statistically meaningful."
     )
 
-    col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Models Tested", df["model"].nunique())
-    col2.metric("Benchmark Questions", len(questions))
-    col3.metric("Categories", len(CATEGORIES))
-    col4.metric("Average Score", f"{df['score'].mean():.1f}%")
+    summary = model_summary(df)
+    c1, c2, c3, c4, c5 = st.columns(5)
+    c1.metric("Models tested", df["model"].nunique())
+    c2.metric("Questions", len(questions))
+    c3.metric("Categories", len(CATEGORIES))
+    c4.metric("Average score", f"{df['score'].mean():.1f}%")
+    c5.metric("Wrong answers", int((~df["is_correct"]).sum()))
 
     st.divider()
 
-    st.subheader("Performance Across Language Categories")
-    st.caption("Average accuracy of all tested models in each category.")
-    by_category = df.groupby("category")["score"].mean().reset_index()
-    fig = px.bar(
-        by_category,
-        x="category",
-        y="score",
-        color="score",
-        color_continuous_scale="Teal",
-        range_y=[0, 100],
-        category_orders={"category": CATEGORY_NAMES},
-        labels={"category": "", "score": "Accuracy (%)"},
-    )
-    st.plotly_chart(fig, width="stretch")
+    left, right = st.columns(2)
+    with left:
+        st.subheader("Model leaderboard")
+        st.plotly_chart(leaderboard_chart(summary), width="stretch")
+    with right:
+        st.subheader("Where the errors fell")
+        st.plotly_chart(errors_by_category_chart(df), width="stretch")
 
-    # Strengths and weaknesses are calculated from the data
-    best = by_category[by_category["score"] == by_category["score"].max()]
-    worst = by_category[by_category["score"] == by_category["score"].min()]
-    st.subheader("Strengths and Weaknesses")
-    st.success("Strongest: " + ", ".join(best["category"]) + f" ({best['score'].iloc[0]:.1f}%)")
-    st.error("Weakest: " + ", ".join(worst["category"]) + f" ({worst['score'].iloc[0]:.1f}%)")
+    st.subheader("Accuracy by model and category")
+    st.caption("Correct answers out of 8 per category. Red cells are where models lost points.")
+    st.plotly_chart(heatmap_chart(df, summary), width="stretch")
 
-    st.divider()
-
-    st.subheader("What We Evaluate")
-    for category in CATEGORIES:
-        st.markdown(f"**{category['name']}**: {category['description']}")
+    with st.expander("What we evaluate"):
+        for category in CATEGORIES:
+            st.markdown(f"**{category['name']}**: {category['description']}")
 
 
 def show_benchmark():
@@ -171,37 +289,43 @@ def show_model_comparison():
         st.warning("No results yet. Run `python src\\run_benchmark.py` first.")
         return
 
-    # Overall table
-    summary = (
-        df.groupby("model")
-        .agg(correct=("is_correct", "sum"), total=("is_correct", "count"), accuracy=("score", "mean"))
-        .reset_index()
-        .sort_values("accuracy", ascending=False)
-    )
-    summary["accuracy"] = summary["accuracy"].round(1)
-    st.subheader("Overall Results")
-    st.dataframe(summary, hide_index=True, width="stretch")
+    summary = model_summary(df)
 
-    # By category
-    st.subheader("Accuracy by Category")
-    by_model_category = df.groupby(["model", "category"])["score"].mean().reset_index()
+    st.subheader("Overall results")
+    st.dataframe(
+        summary,
+        hide_index=True,
+        width="stretch",
+        column_config={
+            "model": st.column_config.TextColumn("Model"),
+            "correct": st.column_config.NumberColumn("Correct", format="%d"),
+            "total": st.column_config.NumberColumn("Questions", format="%d"),
+            "accuracy": st.column_config.ProgressColumn(
+                "Accuracy", min_value=0, max_value=100, format="%.1f%%"
+            ),
+        },
+    )
+
+    st.subheader("Accuracy by category")
+    st.caption("Correct answers out of 8 per category. Red cells are where models lost points.")
+    st.plotly_chart(heatmap_chart(df, summary), width="stretch")
+
+    st.subheader("Accuracy by difficulty")
+    by_level = df.groupby(["model", "difficulty"])["score"].mean().reset_index()
     fig = px.bar(
-        by_model_category,
-        x="category",
+        by_level,
+        x="difficulty",
         y="score",
         color="model",
         barmode="group",
-        range_y=[0, 100],
-        category_orders={"category": CATEGORY_NAMES},
-        labels={"category": "", "score": "Accuracy (%)", "model": "Model"},
+        text_auto=".0f",
+        range_y=[0, 110],
+        category_orders={"difficulty": LEVELS},
+        color_discrete_map=MODEL_COLORS,
+        labels={"difficulty": "", "score": "Accuracy (%)", "model": ""},
     )
-    st.plotly_chart(fig, width="stretch")
-
-    # By difficulty
-    st.subheader("Accuracy by Difficulty")
-    by_level = df.pivot_table(index="model", columns="difficulty", values="score", aggfunc="mean")
-    by_level = by_level.reindex(columns=[l for l in LEVELS if l in by_level.columns]).round(1)
-    st.dataframe(by_level, width="stretch")
+    fig.update_traces(textposition="outside")
+    st.plotly_chart(style(fig, 380), width="stretch")
 
     st.caption(
         f"Small sample: {len(load_questions())} questions. "
@@ -219,6 +343,43 @@ def show_error_analysis():
         return
 
     questions = {q["id"]: q for q in load_questions()}
+
+    errors_df = pd.DataFrame(errors)
+    errors_df["category"] = errors_df["question_id"].map(
+        lambda i: SHORT.get(questions[i]["category"], questions[i]["category"]) if i in questions else "Unknown"
+    )
+
+    left, right = st.columns(2)
+    with left:
+        st.subheader("Errors by model")
+        by_model = errors_df.groupby("model").size().reset_index(name="errors")
+        fig = px.bar(
+            by_model,
+            x="errors",
+            y="model",
+            orientation="h",
+            text="errors",
+            color="model",
+            color_discrete_map=MODEL_COLORS,
+            labels={"errors": "Wrong answers", "model": ""},
+        )
+        fig.update_traces(textposition="outside")
+        fig.update_xaxes(dtick=1)
+        fig.update_layout(showlegend=False)
+        st.plotly_chart(style(fig, 260), width="stretch")
+    with right:
+        st.subheader("Errors by category")
+        by_cat = errors_df.groupby("category").size().reset_index(name="errors")
+        fig = px.bar(
+            by_cat,
+            x="category",
+            y="errors",
+            text="errors",
+            labels={"category": "", "errors": "Wrong answers"},
+        )
+        fig.update_traces(marker_color=ERROR_COLOR, textposition="outside")
+        fig.update_yaxes(dtick=1)
+        st.plotly_chart(style(fig, 260), width="stretch")
 
     models = sorted({e["model"] for e in errors})
     chosen = st.multiselect("Model", models, default=models)
