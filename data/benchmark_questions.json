@@ -12,7 +12,82 @@
     },
     "correct_answer": "B",
     "explanation": "Azərbaycan sözündə ə hərfi işlənir və söz böyük hərflə başlayır.",
-    "verified": false
+    "verified": true
+  },
+  {
+    "id": "ORT-002",
+    "category": "Orthography",
+    "difficulty": "Easy",
+    "question": "Hansı sözün yazılışı düzgündür?",
+    "choices": {
+      "A": "qardas",
+      "B": "qardaş",
+      "C": "qardash",
+      "D": "qardaç"
+    },
+    "correct_answer": "B",
+    "explanation": "Düzgün yazılış: qardaş. Söz ş hərfi ilə yazılır.",
+    "verified": true
+  },
+  {
+    "id": "ORT-003",
+    "category": "Orthography",
+    "difficulty": "Easy",
+    "question": "Hansı sözün yazılışı düzgündür?",
+    "choices": {
+      "A": "çörek",
+      "B": "chörək",
+      "C": "corək",
+      "D": "çörək"
+    },
+    "correct_answer": "D",
+    "explanation": "Düzgün yazılış: çörək. Söz ç və ə hərfləri ilə yazılır.",
+    "verified": true
+  },
+  {
+    "id": "ORT-004",
+    "category": "Orthography",
+    "difficulty": "Medium",
+    "question": "Tikiş tikmək üçün istifadə olunan alətin düzgün yazılışı hansıdır?",
+    "choices": {
+      "A": "iynə",
+      "B": "ıynə",
+      "C": "iyne",
+      "D": "ığnə"
+    },
+    "correct_answer": "A",
+    "explanation": "Düzgün yazılış: iynə. Söz i və ə hərfləri ilə yazılır.",
+    "verified": true
+  },
+  {
+    "id": "ORT-005",
+    "category": "Orthography",
+    "difficulty": "Medium",
+    "question": "Məktəbdə dərs deyən şəxsin düzgün yazılışı hansıdır?",
+    "choices": {
+      "A": "müellim",
+      "B": "muəllim",
+      "C": "müəllim",
+      "D": "müallim"
+    },
+    "correct_answer": "C",
+    "explanation": "Düzgün yazılış: müəllim. Söz ü və ə hərfləri ilə yazılır.",
+    "verified": true
+  },
+  {
+    "id": "ORT-006",
+    "category": "Orthography",
+    "difficulty": "Hard",
+    "question": "Hansı cümlə orfoqrafik cəhətdən tam düzgündür?",
+    "choices": {
+      "A": "Uşaqlar bagçada oynayırlar.",
+      "B": "Usaqlar bağçada oynayırlar.",
+      "C": "Uşaqlar bağçada oynayırlar.",
+      "D": "Uşaqlar bağçada oynayirlar."
+    },
+    "correct_answer": "C",
+    "explanation": "Düzgün variant: Uşaqlar bağçada oynayırlar. Bu cümlədə ş, ğ, ç və ı hərfləri düzgün yazılmalıdır.",
+    "verified": true
   },
   {
     "id": "IDM-001",
@@ -27,7 +102,7 @@
     },
     "correct_answer": "B",
     "explanation": "\"Əli açıq\" frazeoloji birləşməsi səxavətli, əliaçıq adam deməkdir.",
-    "verified": false
+    "verified": true
   },
   {
     "id": "MOR-001",
@@ -42,6 +117,6 @@
     },
     "correct_answer": "A",
     "explanation": "Əvvəl cəm şəkilçisi (-lar), sonra mənsubiyyət şəkilçisi (-ım) gəlir; ahəng qanununa görə qalın saitli şəkilçilər işlənir.",
-    "verified": false
+    "verified": true
   }
 ]
