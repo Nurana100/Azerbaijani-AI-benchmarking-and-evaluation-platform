@@ -268,5 +268,101 @@
     "correct_answer": "D",
     "explanation": "Ardıcıllıq: kök + cəm (-lər) + mənsubiyyət (-imiz) + hal (-də). Saitlər incə olduğu üçün şəkilçilər incə saitlidir.",
     "verified": true
+  },
+  {
+    "id": "CTX-001",
+    "category": "Context & Comprehension",
+    "difficulty": "Easy",
+    "passage": "Aysel hər səhər saat yeddidə evdən çıxır və məktəbə piyada gedir. Yolda çörək mağazasının yanından keçir. Bu gün yağış yağdığına görə çətir götürüb.",
+    "question": "Aysel bu gün niyə çətir götürüb?",
+    "choices": {
+      "A": "Günəş çox isti idi",
+      "B": "Məktəbə gec qalmışdı",
+      "C": "Yağış yağırdı",
+      "D": "Çörək mağazasına gedirdi"
+    },
+    "correct_answer": "C",
+    "explanation": "Mətnə görə Aysel bu gün yağış yağdığına görə çətir götürüb.",
+    "verified": true
+  },
+  {
+    "id": "CTX-002",
+    "category": "Context & Comprehension",
+    "difficulty": "Easy",
+    "passage": "Rəşad kitabxanaya hər həftə iki dəfə gedir: çərşənbə və şənbə günləri. Bu həftə o, tarix haqqında iki kitab götürüb. Kitabları iki həftəyə qaytarmalıdır.",
+    "question": "Rəşad kitabxanaya həftədə neçə dəfə gedir?",
+    "choices": {
+      "A": "İki dəfə",
+      "B": "Bir dəfə",
+      "C": "Üç dəfə",
+      "D": "Hər gün"
+    },
+    "correct_answer": "A",
+    "explanation": "Birinci cümlə deyir ki, Rəşad kitabxanaya həftədə iki dəfə gedir (çərşənbə və şənbə).",
+    "verified": true
+  },
+  {
+    "id": "CTX-003",
+    "category": "Context & Comprehension",
+    "difficulty": "Medium",
+    "passage": "Fərid futbol oynamağı çox sevir, amma bu həftə komandanın məşqinə gedə bilməyib. Çünki ayağını incitmişdi və həkim ona on gün istirahət etməyi məsləhət görüb. Fərid indi evdə oturub oyunları televizorda izləyir.",
+    "question": "Fərid indi niyə komandanın məşqinə getmir?",
+    "choices": {
+      "A": "Futbolu sevmir",
+      "B": "Evdə dərs oxuyur",
+      "C": "Komanda ilə küsüb",
+      "D": "Ayağını incidib və həkim ona istirahət etməyi məsləhət görüb"
+    },
+    "correct_answer": "D",
+    "explanation": "Mətnə görə Fərid ayağını incidib və həkim ona on gün istirahət məsləhət görüb.",
+    "verified": true
+  },
+  {
+    "id": "CTX-004",
+    "category": "Context & Comprehension",
+    "difficulty": "Medium",
+    "passage": "Leyla və Nigar qardaşdırlar. Leyla Nigardan üç yaş böyükdür. Nigar bu il on iki yaşına çatıb.",
+    "question": "Leyla neçə yaşındadır?",
+    "choices": {
+      "A": "On iki",
+      "B": "On beş",
+      "C": "On doqquz",
+      "D": "Doqquz"
+    },
+    "correct_answer": "B",
+    "explanation": "Nigar 12 yaşındadır, Leyla ondan 3 yaş böyükdür: 12 + 3 = 15.",
+    "verified": true
+  },
+  {
+    "id": "CTX-005",
+    "category": "Context & Comprehension",
+    "difficulty": "Medium",
+    "passage": "Kamran sabah dağa gəzintiyə çıxacaq. Dağda hava dəyişkən olur: səhər günəşli, günorta küləkli, axşam isə bəzən yağışlı. Buna görə Kamran çantasına əlavə köynək və çətir qoyub.",
+    "question": "Kamran niyə çantasına əlavə köynək və çətir qoyub?",
+    "choices": {
+      "A": "Dağda hava həmişə soyuqdur",
+      "B": "Çətir götürmək qanunla məcburidir",
+      "C": "Dağda hava gün ərzində dəyişə bilir",
+      "D": "Dağda heç vaxt günəş olmur"
+    },
+    "correct_answer": "C",
+    "explanation": "Mətnə görə dağda hava gün ərzində dəyişir (günəşli, küləkli, yağışlı), buna görə Kamran əlavə köynək və çətir götürüb.",
+    "verified": true
+  },
+  {
+    "id": "CTX-006",
+    "category": "Context & Comprehension",
+    "difficulty": "Hard",
+    "passage": "Tural şənbə günü dostlarını ad gününə dəvət edib. O, tortu özü bişirmək istəyirdi, amma bazar ertəsi günü işdən gec qayıdıb və vaxtı çatmayıb. Buna görə tortu mağazadan alıb. Qonaqlar tortu tərifləyəndə Tural sadəcə gülümsəyib təşəkkür etdi, tortu özünün bişirmədiyini isə dilinə gətirmədi.",
+    "question": "Mətnə görə, Tural tortu necə əldə edib?",
+    "choices": {
+      "A": "Özü bişirib",
+      "B": "Mağazadan alıb",
+      "C": "Dostlarından biri gətirib",
+      "D": "Qonşusu bişirib"
+    },
+    "correct_answer": "B",
+    "explanation": "Mətn açıq deyir ki, vaxtı çatmadığı üçün Tural tortu mağazadan alıb.",
+    "verified": true
   }
 ]
