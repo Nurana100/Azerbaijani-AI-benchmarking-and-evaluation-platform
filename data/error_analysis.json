@@ -1,0 +1,57 @@
+[
+  {
+    "question_id": "ORT-003",
+    "model": "Qwen3.8 27B (Groq)",
+    "category": "Orthography",
+    "difficulty": "Easy",
+    "predicted": "A",
+    "correct_answer": "D",
+    "error_type": "Azerbaijani-specific letter confusion",
+    "note": "The model chose 'çörek' (with e) instead of 'çörək' (with ə). The two differ by one letter, and the model treated the Azerbaijani letter ə like the Turkish/Latin e.",
+    "human_verified": true
+  },
+  {
+    "question_id": "IDM-003",
+    "model": "GPT-OSS 20B (Groq)",
+    "category": "Idioms & Figurative Language",
+    "difficulty": "Easy",
+    "predicted": "A",
+    "correct_answer": "C",
+    "error_type": "Distractor tied to a keyword",
+    "note": "The idiom 'dil tökmək' means to persuade someone with sweet words. The model chose 'talk a lot', probably because the word 'dil' (tongue) suggests talking. It guessed from the word instead of knowing the idiom.",
+    "human_verified": true
+  },
+  {
+    "question_id": "IDM-004",
+    "model": "GPT-OSS 20B (Groq)",
+    "category": "Idioms & Figurative Language",
+    "difficulty": "Medium",
+    "predicted": "D",
+    "correct_answer": "A",
+    "error_type": "Unknown idiom, literal guess",
+    "note": "The idiom 'əl-ayağa düşmək' means to rush around in a panic. The model chose 'start dancing', a literal reading of hands and feet moving. This suggests the idiom was not recognised.",
+    "human_verified": true
+  },
+  {
+    "question_id": "MOR-005",
+    "model": "Qwen3.8 27B (Groq)",
+    "category": "Morphology & Grammar",
+    "difficulty": "Medium",
+    "predicted": "A",
+    "correct_answer": "C",
+    "error_type": "Vowel harmony violation",
+    "note": "The model chose 'ağacdən' (front-vowel suffix) for the back-vowel word 'ağac'. The correct form is 'ağacdan'. Vowel harmony is a core rule of Azerbaijani grammar.",
+    "human_verified": true
+  },
+  {
+    "question_id": "MOR-006",
+    "model": "Qwen3.8 27B (Groq)",
+    "category": "Morphology & Grammar",
+    "difficulty": "Hard",
+    "predicted": "B",
+    "correct_answer": "D",
+    "error_type": "Wrong suffix order",
+    "note": "The model chose 'müəllimimizlərdə', putting the possessive suffix before the plural. The correct order is root + plural + possessive + case: 'müəllimlərimizdə'.",
+    "human_verified": true
+  }
+]
