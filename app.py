@@ -13,6 +13,7 @@ st.set_page_config(page_title="LexiCode", page_icon="🔤", layout="wide")
 QUESTIONS_FILE = "data/benchmark_questions.json"
 RESULTS_FILE = "data/results.json"
 ERRORS_FILE = "data/error_analysis.json"
+ARENA_VOTES_FILE = "data/arena_votes.json"
 
 # ---------- Project constants ----------
 CATEGORIES = [
@@ -87,12 +88,13 @@ def show_overview():
         st.warning("No results yet. Run `python src\\run_benchmark.py` first.")
         return
 
+    questions = load_questions()
+    verified = sum(1 for q in questions if q["verified"])
     st.info(
-        "Results come from 30 human-verified questions. This is a small sample, "
-        "so small differences between models are not statistically meaningful."
+        f"Results come from {len(questions)} questions ({verified} verified by a native speaker). "
+        "This is a small sample, so small differences between models are not statistically meaningful."
     )
 
-    questions = load_questions()
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Models Tested", df["model"].nunique())
     col2.metric("Benchmark Questions", len(questions))
@@ -162,7 +164,7 @@ def show_benchmark():
 
 def show_model_comparison():
     st.title("Model Comparison")
-    st.write("All models answered the same 30 questions in the same format.")
+    st.write(f"All models answered the same {len(load_questions())} questions in the same format.")
 
     df = results_table()
     if df.empty:
@@ -202,8 +204,8 @@ def show_model_comparison():
     st.dataframe(by_level, width="stretch")
 
     st.caption(
-        "Only 30 questions (6 per category). Treat small gaps as noise, "
-        "and large gaps as a signal worth testing with more questions."
+        f"Small sample: {len(load_questions())} questions. "
+        "Treat small gaps as noise, and large gaps as a signal worth testing with more questions."
     )
 
 
@@ -237,14 +239,6 @@ def show_error_analysis():
             col1.error(f"Model answered: {e['predicted']}")
             col2.success(f"Correct answer: {e['correct_answer']}")
             st.write(e["note"])
-
-
-def show_placeholder(title, description):
-    st.title(title)
-    st.info("This page is under construction.")
-    st.write(description)
-
-ARENA_VOTES_FILE = "data/arena_votes.json"
 
 
 def save_vote(entry):
@@ -341,6 +335,8 @@ def show_arena():
                 pd.DataFrame(wins).T.reset_index().rename(columns={"index": "model"}),
                 hide_index=True,
             )
+
+
 # ---------- Sidebar ----------
 st.sidebar.title("AZ LexiCode")
 st.sidebar.caption("Azerbaijani AI Benchmark Platform")

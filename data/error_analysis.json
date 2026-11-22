@@ -53,5 +53,21 @@
     "error_type": "Wrong suffix order",
     "note": "The model chose 'müəllimimizlərdə', putting the possessive suffix before the plural. The correct order is root + plural + possessive + case: 'müəllimlərimizdə'.",
     "human_verified": true
+  },
+  {
+    "question_id": "CTX-008",
+    "model": "Gemini (gemini-3.1-flash-lite)",
+    "error_type": "Multi-step ordering error",
+    "predicted": "C",
+    "correct_answer": "B",
+    "note": "The model did not combine the three comparisons into one order. It picked Kamran, who is second, instead of Nərmin, who is third."
+  },
+  {
+    "question_id": "CTX-007",
+    "model": "Qwen3.8 27B (Groq)",
+    "error_type": "Time calculation error",
+    "predicted": "B",
+    "correct_answer": "D",
+    "note": "The passage says the three hours include the half-hour stop, but the model added the stop again and answered 11:30."
   }
 ]

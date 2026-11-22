@@ -460,5 +460,159 @@
     "correct_answer": "A",
     "explanation": "Mətnə görə binada on iki sinif otağı və bir idman zalı var. B kitabxananı uydurur, C ayı, D sinif otaqlarının sayını dəyişir.",
     "verified": true
+  },
+  {
+    "id": "ORT-007",
+    "category": "Orthography",
+    "difficulty": "Hard",
+    "question": "Hansı sözün yazılışı düzgündür?",
+    "choices": {
+      "A": "təsüf",
+      "B": "təəssüf",
+      "C": "təəsüf",
+      "D": "təssüf"
+    },
+    "correct_answer": "B",
+    "explanation": "Düzgün yazılış \"təəssüf\" sözüdür (təəssüf).",
+    "verified": true
+  },
+  {
+    "id": "ORT-008",
+    "category": "Orthography",
+    "difficulty": "Hard",
+    "question": "Hansı sözün yazılışı düzgündür?",
+    "choices": {
+      "A": "ədəbiyat",
+      "B": "ədabiyyat",
+      "C": "ədəbiyyat",
+      "D": "ədəbiyyət"
+    },
+    "correct_answer": "C",
+    "explanation": "Düzgün yazılış \"ədəbiyyat\" sözüdür.",
+    "verified": true
+  },
+  {
+    "id": "MOR-007",
+    "category": "Morphology & Grammar",
+    "difficulty": "Hard",
+    "question": "\"Ev\" sözünə cəm, \"bizim\" mənsubiyyəti və çıxışlıq halı şəkilçilərini düzgün ardıcıllıqla artırın (\"bizim evlərimizdən\" mənasında).",
+    "choices": {
+      "A": "evlərimizdən",
+      "B": "evimizlərdən",
+      "C": "evlərmizdən",
+      "D": "evlərimizdan"
+    },
+    "correct_answer": "A",
+    "explanation": "Şəkilçi ardıcıllığı: kök + cəm (-lər) + mənsubiyyət (-imiz) + hal (-dən).",
+    "verified": true
+  },
+  {
+    "id": "MOR-008",
+    "category": "Morphology & Grammar",
+    "difficulty": "Hard",
+    "question": "\"Onlar sabah ___.\" Cümləni inkar gələcək zamanda düzgün tamamlayın (\"gəlmək\" feli).",
+    "choices": {
+      "A": "gəlmiyəcəklər",
+      "B": "gəlməcəklər",
+      "C": "gəlməyəcəkdilər",
+      "D": "gəlməyəcəklər"
+    },
+    "correct_answer": "D",
+    "explanation": "İnkar gələcək zaman: kök + -mə + -yəcək + şəxs-kəmiyyət (-lər) = gəlməyəcəklər.",
+    "verified": true
+  },
+  {
+    "id": "IDM-007",
+    "category": "Idioms & Figurative Language",
+    "difficulty": "Hard",
+    "question": "\"Gözünün ağı-qarası\" ifadəsi hansı mənanı verir?",
+    "choices": {
+      "A": "Çox yorulmuş adam",
+      "B": "Çox istənilən, əziz tutulan adam",
+      "C": "Gözləri görməyən adam",
+      "D": "Çox hirslənmiş adam"
+    },
+    "correct_answer": "B",
+    "explanation": "\"Gözünün ağı-qarası\" ən çox istənilən, əziz tutulan adam deməkdir.",
+    "verified": true
+  },
+  {
+    "id": "IDM-008",
+    "category": "Idioms & Figurative Language",
+    "difficulty": "Hard",
+    "question": "\"Xəbəri eşidəndən sonra ürəyi yerinə gəldi.\" cümləsində \"ürəyi yerinə gəldi\" nə deməkdir?",
+    "choices": {
+      "A": "Ürəyi dayandı",
+      "B": "Aşiq oldu",
+      "C": "Sakitləşdi, rahatladı",
+      "D": "Xəstələndi"
+    },
+    "correct_answer": "C",
+    "explanation": "\"Ürəyi yerinə gəlmək\" narahatlığın keçməsi, sakitləşmək və rahatlanmaq deməkdir.",
+    "verified": true
+  },
+  {
+    "id": "CTX-007",
+    "category": "Context & Comprehension",
+    "difficulty": "Hard",
+    "passage": "Rəşad səhər saat səkkizdə Bakıdan yola düşüb. Yolda ümumilikdə üç saat keçib; bu müddətə yarım saatlıq dayanma da daxildir. Gəncəyə çatan kimi dostuna zəng edib.",
+    "question": "Rəşad Gəncəyə saat neçədə çatıb?",
+    "choices": {
+      "A": "10:30",
+      "B": "11:30",
+      "C": "12:00",
+      "D": "11:00"
+    },
+    "correct_answer": "D",
+    "explanation": "Yola saat 8:00-da çıxıb və yolda cəmi üç saat keçib (dayanma da daxil), deməli 11:00-da çatıb.",
+    "verified": true
+  },
+  {
+    "id": "CTX-008",
+    "category": "Context & Comprehension",
+    "difficulty": "Hard",
+    "passage": "Ayşən Nərmindən tez gəlib. Nərmin Səbinədən tez gəlib. Kamran Ayşəndən sonra, amma Nərmindən əvvəl gəlib.",
+    "question": "Kim üçüncü gəlib?",
+    "choices": {
+      "A": "Ayşən",
+      "B": "Nərmin",
+      "C": "Kamran",
+      "D": "Səbinə"
+    },
+    "correct_answer": "B",
+    "explanation": "Sıra: Ayşən, Kamran, Nərmin, Səbinə. Üçüncü Nərmindir.",
+    "verified": true
+  },
+  {
+    "id": "FTH-007",
+    "category": "Faithfulness",
+    "difficulty": "Hard",
+    "passage": "Kitabxana həftə içi saat doqquzdan altıya qədər işləyir. Şənbə günü yalnız oxu zalı açıqdır. Bazar günü kitabxana bağlıdır.",
+    "question": "Kitabxana şənbə günü saat neçədə bağlanır?",
+    "choices": {
+      "A": "18:00",
+      "B": "17:00",
+      "C": "Mətndə göstərilmir",
+      "D": "12:00"
+    },
+    "correct_answer": "C",
+    "explanation": "Mətndə yalnız həftə içi iş saatları verilib. Şənbə günü bağlanma vaxtı göstərilmir.",
+    "verified": true
+  },
+  {
+    "id": "FTH-008",
+    "category": "Faithfulness",
+    "difficulty": "Hard",
+    "passage": "Elnarə universitetdə iqtisadiyyat oxuyur. O, ikinci kursdadır və hər həftə sonu könüllü kimi heyvan sığınacağında işləyir.",
+    "question": "Aşağıdakı fikirlərdən hansı mətnlə dəstəklənmir?",
+    "choices": {
+      "A": "Elnarə iqtisadiyyat oxuyur",
+      "B": "Elnarə ikinci kursdadır",
+      "C": "Elnarə sığınacaqda maaşla işləyir",
+      "D": "Elnarə həftə sonları sığınacağa gedir"
+    },
+    "correct_answer": "C",
+    "explanation": "Mətndə Elnarənin könüllü işlədiyi deyilir, maaş haqqında heç nə yoxdur.",
+    "verified": true
   }
 ]
