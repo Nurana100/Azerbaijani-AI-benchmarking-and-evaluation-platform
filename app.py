@@ -1,5 +1,7 @@
 import json
 import os
+import random
+from datetime import datetime
 
 import pandas as pd
 import plotly.express as px
@@ -242,7 +244,103 @@ def show_placeholder(title, description):
     st.info("This page is under construction.")
     st.write(description)
 
+ARENA_VOTES_FILE = "data/arena_votes.json"
 
+
+def save_vote(entry):
+    votes = read_json(ARENA_VOTES_FILE)
+    votes.append(entry)
+    with open(ARENA_VOTES_FILE, "w", encoding="utf-8") as f:
+        json.dump(votes, f, ensure_ascii=False, indent=2)
+
+
+def show_arena():
+    from src.llm import MODELS, ask_two
+
+    st.title("AI Arena")
+    st.write("Type a question in Azerbaijani. Two models answer, shown side by side without names.")
+    st.info(
+        "Arena votes are personal opinions on free-form questions. "
+        "They are NOT part of the benchmark scores, because these questions have no answer key."
+    )
+
+    names = list(MODELS)
+    col1, col2 = st.columns(2)
+    model_1 = col1.selectbox("Model 1", names, index=0)
+    model_2 = col2.selectbox("Model 2", names, index=1)
+    prompt = st.text_area("Your question", height=100)
+
+    if st.button("Compare models", type="primary"):
+        if model_1 == model_2:
+            st.warning("Choose two different models.")
+        elif not prompt.strip():
+            st.warning("Type a question first.")
+        else:
+            pair = [model_1, model_2]
+            random.shuffle(pair)  # blind: random order every time
+            with st.spinner("Asking both models..."):
+                result_a, result_b = ask_two(pair[0], pair[1], prompt.strip())
+            st.session_state["arena"] = {
+                "prompt": prompt.strip(), "a": result_a, "b": result_b, "voted": None,
+            }
+
+    state = st.session_state.get("arena")
+    if state:
+        st.divider()
+        st.markdown(f"**Question:** {state['prompt']}")
+        left, right = st.columns(2)
+        for column, label, result in ((left, "A", state["a"]), (right, "B", state["b"])):
+            with column:
+                st.subheader(f"Answer {label}")
+                if result["error"]:
+                    st.error(f"This model failed: {result['error']}")
+                else:
+                    st.write(result["text"])
+
+        both_ok = not state["a"]["error"] and not state["b"]["error"]
+        if both_ok and not state["voted"]:
+            st.write("Which answer is better?")
+            b1, b2, b3, b4 = st.columns(4)
+            choice = None
+            if b1.button("A is better", use_container_width=True):
+                choice = "A"
+            if b2.button("B is better", use_container_width=True):
+                choice = "B"
+            if b3.button("Tie", use_container_width=True):
+                choice = "Tie"
+            if b4.button("Both bad", use_container_width=True):
+                choice = "Both bad"
+            if choice:
+                save_vote({
+                    "time": datetime.now().isoformat(timespec="seconds"),
+                    "prompt": state["prompt"],
+                    "model_a": state["a"]["model"],
+                    "model_b": state["b"]["model"],
+                    "answer_a": state["a"]["text"],
+                    "answer_b": state["b"]["text"],
+                    "winner": choice,
+                })
+                state["voted"] = choice
+
+        if state["voted"]:
+            st.success(f"Vote saved: {state['voted']}")
+            st.write(f"**A** = {state['a']['model']} ({state['a']['seconds']}s)")
+            st.write(f"**B** = {state['b']['model']} ({state['b']['seconds']}s)")
+
+    votes = read_json(ARENA_VOTES_FILE)
+    if votes:
+        with st.expander(f"Vote summary ({len(votes)} votes)"):
+            wins = {}
+            for v in votes:
+                for m in (v["model_a"], v["model_b"]):
+                    wins.setdefault(m, {"wins": 0, "matches": 0})["matches"] += 1
+                if v["winner"] in ("A", "B"):
+                    winner = v["model_a"] if v["winner"] == "A" else v["model_b"]
+                    wins[winner]["wins"] += 1
+            st.dataframe(
+                pd.DataFrame(wins).T.reset_index().rename(columns={"index": "model"}),
+                hide_index=True,
+            )
 # ---------- Sidebar ----------
 st.sidebar.title("AZ LexiCode")
 st.sidebar.caption("Azerbaijani AI Benchmark Platform")
@@ -258,7 +356,4 @@ elif page == "Model Comparison":
 elif page == "Error Analysis":
     show_error_analysis()
 elif page == "AI Arena":
-    show_placeholder(
-        "AI Arena",
-        "Optional demo: type one prompt and see two model answers side by side.",
-    )
+    show_arena()
