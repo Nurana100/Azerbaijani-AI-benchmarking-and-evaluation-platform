@@ -364,5 +364,101 @@
     "correct_answer": "B",
     "explanation": "Mətn açıq deyir ki, vaxtı çatmadığı üçün Tural tortu mağazadan alıb.",
     "verified": true
+  },
+  {
+    "id": "FTH-001",
+    "category": "Faithfulness",
+    "difficulty": "Easy",
+    "passage": "Mətbəxdə üç stəkan var idi. Birinci stəkan boş idi, ikinci stəkan su ilə dolu idi, üçüncü stəkanda isə yarıya qədər çay vardı. Stəkanların hamısı stolun üstündə dayanmışdı.",
+    "question": "Mətnə əsasən, hansı ifadə doğrudur?",
+    "choices": {
+      "A": "Stəkanların hamısı su ilə doludur",
+      "B": "Üçüncü stəkanda yarıya qədər çay var",
+      "C": "Stəkanlar rəfin üstündə dayanıb",
+      "D": "Birinci stəkanda şirə var"
+    },
+    "correct_answer": "B",
+    "explanation": "Mətnə görə üçüncü stəkanda yarıya qədər çay var. A mətnə ziddir, C detalı dəyişir (stol, rəf deyil), D isə mətndə olmayan şirəni uydurur.",
+    "verified": true
+  },
+  {
+    "id": "FTH-002",
+    "category": "Faithfulness",
+    "difficulty": "Easy",
+    "passage": "Samir bazardan üç alma, iki armud və bir kilo üzüm alıb. Pulu kartla ödəyib. Sonra evə taksi ilə qayıdıb.",
+    "question": "Mətnə əsasən, hansı ifadə mətndə YOXDUR (uydurmadır)?",
+    "choices": {
+      "A": "Samir bazardan üzüm alıb",
+      "B": "Samir pulu kartla ödəyib",
+      "C": "Samir evə taksi ilə qayıdıb",
+      "D": "Samir bazardan iki kilo şaftalı alıb"
+    },
+    "correct_answer": "D",
+    "explanation": "Şaftalı mətndə yoxdur. A, B və C mətndə açıq şəkildə var.",
+    "verified": true
+  },
+  {
+    "id": "FTH-003",
+    "category": "Faithfulness",
+    "difficulty": "Medium",
+    "passage": "Nərmin şənbə günü səhər saat doqquzda şəhər kitabxanasına getdi. O, orada üç saat oxudu və iki kitab götürdü. Kitabxanadan çıxanda saat on ikini on dəqiqə keçirdi.",
+    "question": "Mətnə əsasən, hansı ifadə doğrudur?",
+    "choices": {
+      "A": "Nərmin kitabxanada üç saat oxuyub",
+      "B": "Nərmin kitabxanaya cümə günü gedib",
+      "C": "Nərmin üç kitab götürüb",
+      "D": "Nərmin kitabxanadan saat on birdə çıxıb"
+    },
+    "correct_answer": "A",
+    "explanation": "Mətnə görə Nərmin orada üç saat oxuyub. B günü, C kitabların sayını, D çıxış vaxtını dəyişir.",
+    "verified": true
+  },
+  {
+    "id": "FTH-004",
+    "category": "Faithfulness",
+    "difficulty": "Medium",
+    "passage": "Elçin yeni işə qəbul olunub. İlk iş günü o, idarəyə saat səkkizdə gəlib və müdiri ilə görüşüb. Müdir ona iş yerini göstərib və komandanın digər üzvləri ilə tanış edib.",
+    "question": "Mətnə əsasən, hansı ifadə mətndə YOXDUR (uydurmadır)?",
+    "choices": {
+      "A": "Elçin ilk iş günü idarəyə saat səkkizdə gəlib",
+      "B": "Müdir Elçinə iş yerini göstərib",
+      "C": "Elçin ilk gün maaşını alıb",
+      "D": "Elçin müdiri ilə görüşüb"
+    },
+    "correct_answer": "C",
+    "explanation": "Maaş haqqında mətndə heç nə yoxdur. A, B və D mətndə açıq şəkildə var.",
+    "verified": true
+  },
+  {
+    "id": "FTH-005",
+    "category": "Faithfulness",
+    "difficulty": "Hard",
+    "passage": "Şəhərin mərkəzində iki park var: Gül parkı və Çinar parkı. Gül parkı səhər saat altıdan axşam on birə qədər açıqdır. Çinar parkı isə yalnız gündüz, saat onda açılır və axşam yeddidə bağlanır. Dünən axşam saat doqquzda Vüqar parka getmək istəyirdi.",
+    "question": "Mətnə əsasən, Vüqar dünən axşam saat doqquzda hansı parka gedə bilərdi?",
+    "choices": {
+      "A": "Hər iki parka",
+      "B": "Yalnız Gül parkına",
+      "C": "Yalnız Çinar parkına",
+      "D": "Heç birinə"
+    },
+    "correct_answer": "B",
+    "explanation": "Gül parkı saat on birə qədər açıqdır, Çinar parkı isə yeddidə bağlanır. Saat doqquzda yalnız Gül parkı açıqdır.",
+    "verified": true
+  },
+  {
+    "id": "FTH-006",
+    "category": "Faithfulness",
+    "difficulty": "Hard",
+    "passage": "Kənddə yeni məktəb binası tikilib. Binada on iki sinif otağı və bir idman zalı var. Məktəb sentyabrın birində açılıb və ilk gün yüz əlli şagird dərsə gəlib.",
+    "question": "Mətnə əsasən, hansı ifadə tam doğrudur?",
+    "choices": {
+      "A": "Məktəbdə on iki sinif otağı və bir idman zalı var",
+      "B": "Məktəbdə on iki sinif otağı və bir kitabxana var",
+      "C": "Məktəb oktyabrın birində açılıb və yüz əlli şagird gəlib",
+      "D": "Məktəbdə on sinif otağı və bir idman zalı var"
+    },
+    "correct_answer": "A",
+    "explanation": "Mətnə görə binada on iki sinif otağı və bir idman zalı var. B kitabxananı uydurur, C ayı, D sinif otaqlarının sayını dəyişir.",
+    "verified": true
   }
 ]
